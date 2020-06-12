@@ -42,19 +42,8 @@ class LinkedList:
     # 1 - 2 - 3 - 4 - 5
 
     def reverse_list(self, node, prev):
-        list1 = []
-        while node != None:
-            list1.append(node.value)
-            node = node.next_node
-
-        print(list1)        
-
-        for node in list1:
-            node.add_to_head(node.value)
-
-        # start = None
-        # while node != start:
-        #     temp = node.get_next()
-        #     node.next_node = start
-        #     start = node
-        #     node = temp
+        if node != None:
+            if node.next_node == None:
+                self.head = node
+            self.reverse_list(node.next_node, node)
+            node.set_next(prev)
