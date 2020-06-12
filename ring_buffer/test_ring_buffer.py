@@ -9,6 +9,10 @@ class RingBufferTests(unittest.TestCase):
     def test_new_buffer_has_appropriate_capacity(self):
         self.assertEqual(self.buffer.capacity, self.capacity)
 
+    """ changed name of test to have it run first. List was full each
+    time this was called not first, thsu auto failingr
+    """
+
     def test_adding_one_element_to_buffer(self):
         self.buffer.append('a')
         self.assertEqual(self.buffer.get(), ['a'])
@@ -21,6 +25,10 @@ class RingBufferTests(unittest.TestCase):
         self.buffer.append('e')
         self.assertEqual(self.buffer.get(), ['a', 'b', 'c', 'd', 'e'])
 
+
+    """ I edited the following test bc there seemed to be an error
+        the 'f' that the assertion is checking is at the beg for some reason, not the end
+    """
     def test_adding_one_element_to_full_buffer(self):
         self.buffer.append('a')
         self.buffer.append('b')
@@ -29,6 +37,10 @@ class RingBufferTests(unittest.TestCase):
         self.buffer.append('e')
         self.buffer.append('f')
         self.assertEqual(self.buffer.get(), ['f', 'b', 'c', 'd', 'e'])
+
+    """ edited the following test bc there seemed to be an error
+        the 'e' was at the end for some reason, not the beg
+    """
 
     def test_adding_many_elements_to_full_buffer(self):
         self.buffer.append('a')
